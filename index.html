@@ -3,7 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
 <style>
 /* reset */
 html, body, div, span, applet, object, iframe,
@@ -63,8 +62,8 @@ p { font-size: 3.0rem; }
   padding: 15px;
 }
 .gradient {
-  background: rgb(255,174,123);
-  background: radial-gradient(circle, rgba(255,174,123,1) 0%, rgba(215,110,119,1) 47%, rgba(59,28,113,1) 100%);
+  background: rgb(255,174,123) ;
+  background: radial-gradient(circle, rgba(255,174,123,1) 0%, rgba(215,110,119,1) 47%, rgba(59,28,113,1) 100%) ;
 }
 .cluster {
   display: flex;
@@ -92,9 +91,7 @@ progress[value]::-webkit-progress-bar {
   background: #00add6;
 }
 </style>
-
 </head>
-
 
 <body class="gradient">
   <div class="container">
@@ -119,6 +116,7 @@ progress[value]::-webkit-progress-bar {
     </div>
   </div>
 </body>
+
 <script>
   setInterval(function ( ) {
     var xhttp = new XMLHttpRequest();
@@ -140,5 +138,5 @@ setInterval(function ( ) {
   xhttp.open("GET", "/humidity", true);
   xhttp.send();
 }, 10000 ) ;
-  </script>
+</script>
 </html>
