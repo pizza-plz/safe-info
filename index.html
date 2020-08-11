@@ -98,18 +98,18 @@ progress[value]::-webkit-progress-bar {
     <h2>Good Morning, Pizza</h2>
     <div class="cluster">
       <div class="gauge gauge-temperature">
-        <progress max="120" value="74" id="temperature"></progress>
+        <progress max="120" value="%TEMPERATURE%" id="prog-temperature"></progress>
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i>
-        <span id="temperature">74</span>
-        <!-- <span id="temperature">%TEMPERATURE%</span> -->
+        <!-- <span id="temperature">74</span> -->
+        <span id="temperature">%TEMPERATURE%</span>
         <sup class="units">&deg;F</sup>
         <span class="dht-labels">Temperature</span>
       </div>
       <div class="gauge gauge-humidity">
-        <progress max="120" value="38" id="humidity"></progress>
+        <progress max="120" value="%HUMIDITY%" id="prog-humidity"></progress>
         <i class="fas fa-tint" style="color:#00add6;"></i>
-        <span id="humidity">38</span>
-        <!-- <span id="humidity">%HUMIDITY%</span> -->
+        <!-- <span id="humidity">38</span> -->
+        <span id="humidity">%HUMIDITY%</span>
         <sup class="units">%</sup>
         <span class="dht-labels">Humidity</span>
       </div>
