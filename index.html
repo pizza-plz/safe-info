@@ -3,7 +3,6 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
 <style>
 /* reset */
 html, body, div, span, applet, object, iframe,
@@ -63,8 +62,8 @@ p { font-size: 3.0rem; }
   padding: 15px;
 }
 .gradient {
-  background: rgb(255,174,123);
-  background: radial-gradient(circle, rgba(255,174,123,1) 0%, rgba(215,110,119,1) 47%, rgba(59,28,113,1) 100%);
+  background: rgb(255,174,123) ;
+  background: radial-gradient(circle, rgba(255,174,123,1) 0%, rgba(215,110,119,1) 47%, rgba(59,28,113,1) 100%) ;
 }
 .cluster {
   display: flex;
@@ -92,33 +91,32 @@ progress[value]::-webkit-progress-bar {
   background: #00add6;
 }
 </style>
-
 </head>
-
 
 <body class="gradient">
   <div class="container">
     <h2>Good Morning, Pizza</h2>
     <div class="cluster">
       <div class="gauge gauge-temperature">
-        <progress max="120" value="74" id="temperature"></progress>
+        <progress max="120" value="%TEMPERATURE%" id="prog-temperature"></progress>
         <i class="fas fa-thermometer-half" style="color:#059e8a;"></i>
-        <span id="temperature">74</span>
-        <!-- <span id="temperature">%TEMPERATURE%</span> -->
+        <!-- <span id="temperature">74</span> -->
+        <span id="temperature">%TEMPERATURE%</span>
         <sup class="units">&deg;F</sup>
         <span class="dht-labels">Temperature</span>
       </div>
       <div class="gauge gauge-humidity">
-        <progress max="120" value="38" id="humidity"></progress>
+        <progress max="120" value="%HUMIDITY%" id="prog-humidity"></progress>
         <i class="fas fa-tint" style="color:#00add6;"></i>
-        <span id="humidity">38</span>
-        <!-- <span id="humidity">%HUMIDITY%</span> -->
+        <!-- <span id="humidity">38</span> -->
+        <span id="humidity">%HUMIDITY%</span>
         <sup class="units">%</sup>
         <span class="dht-labels">Humidity</span>
       </div>
     </div>
   </div>
 </body>
+
 <script>
   setInterval(function ( ) {
     var xhttp = new XMLHttpRequest();
@@ -140,5 +138,5 @@ setInterval(function ( ) {
   xhttp.open("GET", "/humidity", true);
   xhttp.send();
 }, 10000 ) ;
-  </script>
+</script>
 </html>
