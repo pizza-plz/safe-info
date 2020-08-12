@@ -62,8 +62,17 @@ p { font-size: 3.0rem; }
   padding: 15px;
 }
 .gradient {
-  background: rgb(255,174,123) ;
-  background: radial-gradient(circle, rgba(255,174,123,1) 0%, rgba(215,110,119,1) 47%, rgba(59,28,113,1) 100%) ;
+  /* https://colorzilla.com/gradient-editor/#ffae7b+0,d76e77+50,3b1c71+100 */
+  background: #ffae7b; /* Old browsers */
+}
+.gradient {
+  background: -moz-radial-gradient( center, ellipse cover, #ffae7b 0%, #d76e77 50%, #3b1c71 100% ) ; /* FF3.6-15 */
+}
+.gradient {
+  background: -webkit-radial-gradient( center, ellipse cover, #ffae7b 0%,#d76e77 50%,#3b1c71 100% ) ; /* Chrome10-25,Safari5.1-6 */
+}
+.graident {
+  background: radial-gradient( ellipse at center, #ffae7b 0%,#d76e77 50%,#3b1c71 100% ) ; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 .cluster {
   display: flex;
