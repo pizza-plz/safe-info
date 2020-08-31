@@ -7,7 +7,9 @@ Will show safe humidity/temp as well as local temperature for my area
 * Connected to the internet
 
 ## Links
-https://api.climacell.co/v3/api-docs/#/
-https://developer.climacell.co/v3/reference#get-daily
-https://faq.developer.climacell.co/en/articles/3878399-how-should-i-go-about-reporting-a-possible-data-discrepancy-or-system-faults
-
+* [Climacell - API Docs](https://api.climacell.co/v3/api-docs/#/)
+* [Climacell - Reference, get-daily](https://developer.climacell.co/v3/reference#get-daily)
+* [Climacell - Report issues](https://faq.developer.climacell.co/en/articles/3878399-how-should-i-go-about-reporting-a-possible-data-discrepancy-or-system-faults)
+## Roadmap
+* Maybe replace cars with 8bit guns
+* More weather data
