@@ -90,6 +90,5 @@ function refresh() {
         console.log("There has been a problem getting data from the API");
     });
 }
-greeting();//initial run
 refresh(); //initial run
 setInterval(refresh, 3600000); //refresh once per hour
