@@ -1,9 +1,9 @@
-#include <Arduino.h> 
-#include <ESP8266WiFi.h> 
-#include <Hash.h> 
-#include <ESPAsyncTCP.h> 
-#include <ESPAsyncWebServer.h> 
-#include <Adafruit_Sensor.h> 
+#include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include <Hash.h>
+#include <ESPAsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+#include <Adafruit_Sensor.h>
 #include <DHT.h>
 
 const char* ssid = "ATTqMhTf5S";
@@ -41,51 +41,92 @@ const char index_html[] PROGMEM = R"rawliteral(
 
 <body class="gradient">
   <div class="container">
-    <h2>Good Morning, Pizza</h2>
-    <div class="cluster">
-      <div class="gauge gauge-temperature">
-        <progress max="120" value="%TEMPERATURE%" id="prog-temperature"></progress>
-        <i class="fas fa-thermometer-half" style="color:#059e8a;"></i>
-        <!-- <span id="temperature">74</span> -->
-        <span id="temperature">%TEMPERATURE%</span>
-        <sup class="units">&deg;F</sup>
-        <span class="dht-labels">Temperature</span>
-      </div>
-      <div class="gauge gauge-humidity">
-        <progress max="120" value="%HUMIDITY%" id="prog-humidity"></progress>
-        <i class="fas fa-tint" style="color:#00add6;"></i>
-        <!-- <span id="humidity">38</span> -->
-        <span id="humidity">%HUMIDITY%</span>
-        <sup class="units">%</sup>
-        <span class="dht-labels">Humidity</span>
-      </div>
+    <div class+"row">
+        <h2 id="greeting">Good Morning, Pizza</h2>
+        <div class="cluster">
+          <div class="gauge gauge-temperature">
+            <progress max="120" value="%TEMPERATURE%" id="prog-temperature"></progress>
+            <i class="fas fa-thermometer-half"></i>
+            <span id="temperature">%TEMPERATURE%</span>
+            <sup class="units">&deg;F</sup>
+            <span class="dht-labels">Temperature</span>
+          </div>
+          <div class="gauge gauge-humidity">
+            <progress max="120" value="%HUMIDITY%" id="prog-humidity"></progress>
+            <i class="fas fa-tint"></i>
+            <span id="humidity">%HUMIDITY%</span>
+            <sup class="units">%</sup>
+            <span class="dht-labels">Humidity</span>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="weather">
+            <div class="weather-item">
+                <div class="day" id="weather-day1">Today</div>
+                <div class="temp">
+                    <div class="lows">
+                        <i class="icon fa fa-arrow-down"></i>
+                        <span class="temp-value" id="day1-temp-low">999</span>
+                        <span class="temp-units">F</span>
+                    </div>
+                    <div class="highs">
+                        <i class="icon fa fa-arrow-up"></i>
+                        <span class="temp-value" id="day1-temp-high">999</span>
+                        <span class="temp-units">F</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-item">
+                <div class="day" id="weather-day2">Tomorrow</div>
+                <div class="temp">
+                    <div class="lows">
+                        <i class="icon fa fa-arrow-down"></i>
+                        <span class="temp-value" id="day2-temp-low">999</span>
+                        <span class="temp-units">F</span>
+                    </div>
+                    <div class="highs">
+                        <i class="icon fa fa-arrow-up"></i>
+                        <span class="temp-value" id="day2-temp-high">999</span>
+                        <span class="temp-units">F</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-item">
+                <div class="day" id="weather-day3">Day After Tomorrow</div>
+                <div class="temp">
+                    <div class="lows">
+                        <i class="icon fa fa-arrow-down"></i>
+                        <span class="temp-value" id="day3-temp-low">999</span>
+                        <span class="temp-units">F</span>
+                    </div>
+                    <div class="highs">
+                        <i class="icon fa fa-arrow-up"></i>
+                        <span class="temp-value" id="day3-temp-high">999</span>
+                        <span class="temp-units">F</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="car-container">
+            <div class="car">
+                <img src="car-yellow.png" />
+            </div>
+            <div class="car">
+                <img src="car-green.png" />
+            </div>
+            <div class="car">
+                <img src="car-red.png" />
+            </div>
+        </div>
     </div>
   </div>
 </body>
-
-<script>
-  setInterval(function ( ) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("temperature").innerHTML = this.responseText;
-      }
-    };
-    xhttp.open("GET", "/temperature", true);
-    xhttp.send();
-  }, 10000 ) ;
-setInterval(function ( ) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("humidity").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/humidity", true);
-  xhttp.send();
-}, 10000 ) ;
-</script>
-</html>)rawliteral";
+<script src="script.js"></script>
+</html>
+)rawliteral";
 
 
 // Replaces placeholder with DHT values
@@ -146,7 +187,7 @@ void loop() {
     //Humidity
     float newH = dht.readHumidity();
     if (isnan(newH)) {
-      Serial.println("Failed to read from DHT sensor!");  
+      Serial.println("Failed to read from DHT sensor!");
     }
     else{
       h = newH;
